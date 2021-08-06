@@ -68,17 +68,17 @@ func main() {
 			}
 		} else if strings.Contains(line, "* ") { //Block comment
 			if strings.HasPrefix(line, "* ") {
-				fmt.Printf("%s", strings.TrimPrefix(line, "* "))
+				fmt.Printf("%s\n", strings.TrimPrefix(line, "* "))
 			} else if strings.HasPrefix(line, " * ") {
-				fmt.Printf("%s", strings.TrimPrefix(line, " * "))
+				fmt.Printf("%s\n", strings.TrimPrefix(line, " * "))
 			}
 		} else if strings.Contains(line, " */ ") { //Block comment
 
 		} else {
 			if strings.HasPrefix(line, "  ") {
-				fmt.Printf("%s", line)
+				fmt.Printf("%s\n", line)
 			} else if strings.HasPrefix(line, " ") {
-				fmt.Printf("%s", line)
+				fmt.Printf("%s\n", line)
 			}
 
 		}
