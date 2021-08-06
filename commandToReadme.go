@@ -36,7 +36,10 @@ func main() {
 	}
 	defer f.Close()
 
+	// var incomment bool
+	// incomment = false
 	rd := bufio.NewReader(f)
+
 	for {
 		line, err := rd.ReadString('\n')
 		if err != nil {
@@ -48,20 +51,42 @@ func main() {
 			return
 		}
 		if strings.Contains(line, "//") { // Go, C, C++, verilog
-			if strings.HasPrefix(line, " //") {
-				fmt.Printf("%s", strings.TrimPrefix(line, " //"))
-			} else if strings.HasPrefix(line, " // ") {
-				fmt.Printf("%s", strings.TrimPrefix(line, " // "))
-			} else if strings.HasPrefix(line, "// ") {
+			if strings.HasPrefix(line, "// ") {
 				fmt.Printf("%s", strings.TrimPrefix(line, "// "))
+			} else if strings.HasPrefix(line, "//") {
+				fmt.Printf("%s", strings.TrimPrefix(line, "//"))
 			}
 		} else if strings.Contains(line, "#") { //python
-			if strings.HasPrefix(line, "#") {
-				fmt.Printf("%s", strings.TrimPrefix(line, "#"))
-			} else if strings.HasPrefix(line, "# ") {
+			if strings.HasPrefix(line, "# ") {
 				fmt.Printf("%s", strings.TrimPrefix(line, "# "))
+			} else if strings.HasPrefix(line, "#") {
+				fmt.Printf("%s", strings.TrimPrefix(line, "#"))
 			}
+		} else if strings.Contains(line, "/*") { //Block comment
+			if strings.HasPrefix(line, "/* ") {
+				fmt.Printf("%s", strings.TrimPrefix(line, "/* "))
+			}
+		} else if strings.Contains(line, "* ") { //Block comment
+			if strings.HasPrefix(line, "* ") {
+				fmt.Printf("%s", strings.TrimPrefix(line, "* "))
+			} else if strings.HasPrefix(line, " * ") {
+				fmt.Printf("%s", strings.TrimPrefix(line, " * "))
+			}
+		} else if strings.Contains(line, " */ ") { //Block comment
+
+		} else {
+			if strings.HasPrefix(line, "  ") {
+				fmt.Printf("%s", line)
+			} else if strings.HasPrefix(line, " ") {
+				fmt.Printf("%s", line)
+			}
+
 		}
 	}
-
 }
+
+/* This is a block comment
+ * more comment
+    more comment
+ more comment
+*/
