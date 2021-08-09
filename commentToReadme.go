@@ -1,5 +1,7 @@
 package main
 
+//MDCode Start
+
 //MD # commentToReadme
 //MD ---
 //MD This is a program will create a **Readme Markdown** file from the tagged comments and code in that source file.
@@ -20,6 +22,8 @@ package main
 //MD
 //MD
 //MD ---
+
+//MDCodeEnd
 
 import (
 	"bufio"
@@ -54,11 +58,11 @@ func main() {
 				break
 			}
 
-			//MDCode Start
+			
 			log.Fatalf("read file line error: %v", err)
 			return
 		}
-		//MDCodeEnd
+		
 		if strings.Contains(strings.TrimSpace(line), "//MDCode Start") && !strings.Contains(line, "if") { // Go, C, C++, verilog single line comment
 			//fmt.Printf("%s start %v\n", strings.TrimSpace(line), codeblock)
 			fmt.Printf("\n     '''\n")
