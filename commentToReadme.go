@@ -58,11 +58,9 @@ func main() {
 				break
 			}
 
-			
 			log.Fatalf("read file line error: %v", err)
 			return
 		}
-		
 		if strings.Contains(strings.TrimSpace(line), "//MDCode Start") && !strings.Contains(line, "if") { // Go, C, C++, verilog single line comment
 			//fmt.Printf("%s start %v\n", strings.TrimSpace(line), codeblock)
 			fmt.Printf("\n     '''\n")
